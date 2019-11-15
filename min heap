@@ -1,0 +1,74 @@
+import java.io.*;
+import java.util.*;
+class Heap {
+    ArrayList<Integer> al=new ArrayList<>();
+    public void additem(int item)
+    {
+        al.add(item);
+        upheapify(al.size()-1);
+        
+    }
+    public void upheapify(int ci)
+    {
+        int pi=(ci-1)/2;
+        if(al.get(ci)<al.get(pi))
+        {
+            swap(pi,ci);
+            upheapify(pi);
+        }
+    }
+    public int remove()
+    {
+        swap(0,al.size()-1);
+        int rv=al.remove(al.size()-1);
+        downheapify(0);
+        return rv;
+    }
+    void downheapify(int pi)
+    {
+        int lci=2*pi+1;
+        int rci=2*pi+2;
+        int min=pi;
+        if(lci<al.size() && al.get(lci)<al.get(min))
+        {
+            min=lci;
+        }
+        if(rci<al.size() && al.get(rci)<al.get(min))
+        {
+            min=rci;
+        }
+        if(min!=pi)
+        {
+            swap(pi,min);
+           
+            downheapify(min);
+        }
+    }
+    void swap(int i,int j)
+    {
+        int ith=al.get(i);
+        int jth=al.get(j);
+        al.set(i,jth);
+        al.set(j,ith);
+    }
+    public void display()
+    {
+        System.out.println(al);
+    }
+	public static void main (String[] args) {
+		Heap h=new Heap();
+		h.additem(10);
+		h.additem(26);
+		h.additem(30);
+		h.additem(18);	
+		h.additem(12);	
+		h.additem(1);
+		h.additem(13);
+	    h.display();
+	    System.out.println("--------------------------------");
+	    System.out.println(h.remove());
+	    h.display();
+	    
+		
+	}
+}
