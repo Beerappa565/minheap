@@ -2,10 +2,12 @@ import java.io.*;
 import java.util.*;
 class Heap {
     ArrayList<Integer> al=new ArrayList<>();
-    public void additem(int item)
+    // creating aan arraylist 
+    // we can insert  any number of elments
+    public void additem(int item)// add an item to the arrsylsit
     {
-        al.add(item);
-        upheapify(al.size()-1);
+        al.add(item);// elemnt inserted at last position
+        upheapify(al.size()-1);// we are creating min heap we are calling upheapify mentod so the element smaller elememt is present at starting of the arrayList
         
     }
     public void upheapify(int ci)
